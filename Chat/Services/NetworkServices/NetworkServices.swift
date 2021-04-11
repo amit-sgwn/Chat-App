@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+//Utility for api call 
 struct HttpUtility {
     
     func getApiData<T: Decodable>(requestURL: URL, resultType: T.Type,completionHandler: @escaping(_ result: T) -> Void) {

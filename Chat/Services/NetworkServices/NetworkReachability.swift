@@ -8,6 +8,9 @@
 import Foundation
 import SystemConfiguration
 
+//Copied from Net
+// MARK: - Reachability
+
 public class Reachability {
 
     class func isConnectedToNetwork() -> Bool {

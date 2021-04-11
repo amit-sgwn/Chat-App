@@ -8,6 +8,7 @@
 import Foundation
 import MessageKit
 
+//fetcher class
 class ChatMessageFetcher {
     
     private let _apikey = "6nt5d1nJHkqbkphe"

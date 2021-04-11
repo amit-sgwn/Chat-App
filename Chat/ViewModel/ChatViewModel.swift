@@ -20,6 +20,7 @@ class ChatViewModel {
         }
     }
     
+    //MARK: Computed Property to set sender and reciever
     private var currentUser: Sender {
         get {
             return self._currentUser
@@ -39,15 +40,18 @@ class ChatViewModel {
         
         self.delegate = delegate
         self._currentUser = currentUser//
-        self._otherUser = Sender(senderId: "63906", displayName: "ChatBot")//otherUser
+        self._otherUser = Sender(senderId: "63906", displayName: "ChatBot")
         self._chatMessageFetcher = ChatMessageFetcher(httpUtility: HttpUtility())
         self.messageRepository = MessageDataRepository()
+        
+        //If there are messages to send
         if Reachability.isConnectedToNetwork() {
             pushAllMessage()
         }
         getObjects()
     }
     
+    //Push to api when network is back
     func pushAllMessage() {
         guard let messages = self.messageRepository.getAll(isSent: false) else {
             return
@@ -55,9 +59,13 @@ class ChatViewModel {
         if messages.count == 0 {
             return
         }
+        //Dispatch group for all api
         let dispatchGroup = DispatchGroup()
         let queue = DispatchQueue(label: "push.all.data")
+        
+        //Queue fro core data operations
         let coreDataQueue = DispatchQueue(label: "coreData.store")
+        
         queue.async {
             for mssg in messages {
                 var messageStr = ""
@@ -76,6 +84,7 @@ class ChatViewModel {
                         return
                     }
                     let recievedMessage = FormattedMessage(sender: weakself.otherUser, messageId: UUID().uuidString, sentDate: Date(), kind: .text(msg.message.message))
+                    //Dumping to coredata when api success
                     coreDataQueue.async {
                         weakself.messageRepository.createMessag(msg: recievedMessage)
                         weakself.messageRepository.update(isSent: true, msg: mssg)
@@ -91,6 +100,7 @@ class ChatViewModel {
         }
     }
     
+    //Push data to api if there is network other dump in DB
     func sendMessage(msg: String){
         
         if !Reachability.isConnectedToNetwork() {
@@ -116,12 +126,14 @@ class ChatViewModel {
         }
     }
     
+    //Demp data to DB  when offline
     func pushForOffline(msg: String) {
         let currentMessage = FormattedMessage(sender: _currentUser, messageId: UUID().uuidString, sentDate: Date(), kind: .text(msg))
         messageRepository.createMessag(isSent: false,msg: currentMessage)
         getObjects()
     }
     
+    //Fetch all data from DB
     func getObjects() {
         guard var messages = messageRepository.getAll() else {
             return
@@ -131,6 +143,7 @@ class ChatViewModel {
         _messageList = messages
     }
     
+    //Return object with index
     subscript(index: Int) -> FormattedMessage {
         get {
             return _messageList[index]

@@ -8,6 +8,8 @@
 import Foundation
 import CoreData
 
+//MARK: MessageRepository
+
 protocol MessageRepository {
     
     func createMessag(isSent: Bool , msg: FormattedMessage)
@@ -19,8 +21,12 @@ protocol MessageRepository {
     
 }
 
+//MARK: Repositroy to get data from database
 
 struct MessageDataRepository: MessageRepository {
+    
+    //MARK: Get all mesage which are not sent on api
+    
     func getAll(isSent: Bool) -> [FormattedMessage]? {
         let result = PersistentStorage.shared.fetchManagedObject(managedObject: CDFormattedMessage.self)?.filter{ $0.isSent == isSent }
         var message: [FormattedMessage] = []
@@ -34,7 +40,7 @@ struct MessageDataRepository: MessageRepository {
         return message
     }
     
-    
+    //Dump new message on DB
     func createMessag(isSent: Bool = true, msg: FormattedMessage) {
         let message = CDFormattedMessage(context: PersistentStorage.shared.context)// msg.getCoreDataObject()
         message.isSent = isSent
@@ -52,6 +58,7 @@ struct MessageDataRepository: MessageRepository {
         PersistentStorage.shared.saveContext()
     }
     
+    //Get all stored
     func getAll() -> [FormattedMessage]? {
         let result = PersistentStorage.shared.fetchManagedObject(managedObject: CDFormattedMessage.self)
         var message: [FormattedMessage] = []

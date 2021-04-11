@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import MessageKit
 
-
+//CorreData classes
 extension CDFormattedMessage {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<CDFormattedMessage> {
