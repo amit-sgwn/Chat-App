@@ -24,6 +24,23 @@ struct FormattedMessage: MessageType {
     var sentDate: Date
 
     var kind: MessageKind
+    
+    func getCoreDataObject(isSent: Bool = false)  -> CDFormattedMessage {
+        let msg = CDFormattedMessage()
+        msg.isSent = isSent
+        msg.messageId = messageId
+        msg.sentDate = self.sentDate
+        msg.senderName = self.sender.displayName
+        msg.senderId = self.sender.senderId
+        
+        switch kind {
+        case .text(let text):
+            msg.message = text
+        default:
+            break
+        }
+        return msg
+    }
 
 }
 
@@ -33,11 +50,7 @@ struct Message: Codable {
     let success: Int
     let errorMessage: String
     let message: MessageClass
-    
-    func getFormattedMessage() -> FormattedMessage {
-        let sender = Sender(senderId: "\(message.chatBotID)", displayName: message.chatBotName)
-        
-    }
+
 }
 
 // MARK: - MessageClass

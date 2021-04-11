@@ -19,6 +19,13 @@
 		4984BFA8262094660055948C /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4984BFA7262094660055948C /* ChatViewModel.swift */; };
 		4984BFB1262095C70055948C /* NetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4984BFB0262095C70055948C /* NetworkServices.swift */; };
 		4984BFB9262096600055948C /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4984BFB8262096600055948C /* DataFetcher.swift */; };
+		4984BFC72621BBB10055948C /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4984BFC62621BBB00055948C /* CoreData.swift */; };
+		4984BFD02621BC2A0055948C /* MessageData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4984BFCE2621BC2A0055948C /* MessageData.xcdatamodeld */; };
+		4984BFD52621E3CD0055948C /* PersistanceStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4984BFD42621E3CD0055948C /* PersistanceStorage.swift */; };
+		4984BFE62622CFEE0055948C /* CDFormattedMessage+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4984BFE42622CFEE0055948C /* CDFormattedMessage+CoreDataClass.swift */; };
+		4984BFE72622CFEE0055948C /* CDFormattedMessage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4984BFE52622CFEE0055948C /* CDFormattedMessage+CoreDataProperties.swift */; };
+		4984BFF02622DD4E0055948C /* MessageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4984BFEF2622DD4E0055948C /* MessageRepository.swift */; };
+		4984BFF8262302FF0055948C /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4984BFF7262302FF0055948C /* NetworkReachability.swift */; };
 		803AC585D296EF0E9265DC38 /* Pods_Chat_ChatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77D0E8EDA68FBE0AE1FF36EA /* Pods_Chat_ChatUITests.framework */; };
 		A1FFF763D944D69355CD0B7E /* Pods_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6649E8DC93CDFA15E2F91C8A /* Pods_Chat.framework */; };
 		CC880468572088C3871EB978 /* Pods_ChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91B356AC6963E698968925EE /* Pods_ChatTests.framework */; };
@@ -63,6 +70,13 @@
 		4984BFA7262094660055948C /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		4984BFB0262095C70055948C /* NetworkServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServices.swift; sourceTree = "<group>"; };
 		4984BFB8262096600055948C /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
+		4984BFC62621BBB00055948C /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
+		4984BFCF2621BC2A0055948C /* MessageData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MessageData.xcdatamodel; sourceTree = "<group>"; };
+		4984BFD42621E3CD0055948C /* PersistanceStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceStorage.swift; sourceTree = "<group>"; };
+		4984BFE42622CFEE0055948C /* CDFormattedMessage+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDFormattedMessage+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		4984BFE52622CFEE0055948C /* CDFormattedMessage+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDFormattedMessage+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		4984BFEF2622DD4E0055948C /* MessageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRepository.swift; sourceTree = "<group>"; };
+		4984BFF7262302FF0055948C /* NetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
 		6649E8DC93CDFA15E2F91C8A /* Pods_Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77D0E8EDA68FBE0AE1FF36EA /* Pods_Chat_ChatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chat_ChatUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EB2C2616EDF6094777A99D1 /* Pods-Chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat.debug.xcconfig"; path = "Target Support Files/Pods-Chat/Pods-Chat.debug.xcconfig"; sourceTree = "<group>"; };
@@ -169,7 +183,9 @@
 		4984BF9D262093710055948C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4984BFEE2622DD2F0055948C /* Repository */,
 				4984BF9E2620938F0055948C /* DataModel.swift */,
+				4984BFD42621E3CD0055948C /* PersistanceStorage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -196,6 +212,7 @@
 			children = (
 				4984BFB8262096600055948C /* DataFetcher.swift */,
 				4984BFB0262095C70055948C /* NetworkServices.swift */,
+				4984BFF7262302FF0055948C /* NetworkReachability.swift */,
 			);
 			path = NetworkServices;
 			sourceTree = "<group>";
@@ -203,8 +220,36 @@
 		4984BFBE262096A80055948C /* StorageServices */ = {
 			isa = PBXGroup;
 			children = (
+				4984BFC52621BB9A0055948C /* Data */,
 			);
 			path = StorageServices;
+			sourceTree = "<group>";
+		};
+		4984BFC52621BB9A0055948C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				4984BFE32622CE950055948C /* CoreDataHelperFile */,
+				4984BFC62621BBB00055948C /* CoreData.swift */,
+				4984BFCE2621BC2A0055948C /* MessageData.xcdatamodeld */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		4984BFE32622CE950055948C /* CoreDataHelperFile */ = {
+			isa = PBXGroup;
+			children = (
+				4984BFE42622CFEE0055948C /* CDFormattedMessage+CoreDataClass.swift */,
+				4984BFE52622CFEE0055948C /* CDFormattedMessage+CoreDataProperties.swift */,
+			);
+			path = CoreDataHelperFile;
+			sourceTree = "<group>";
+		};
+		4984BFEE2622DD2F0055948C /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				4984BFEF2622DD4E0055948C /* MessageRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		9F8405AA3E08FDF8D12B18C3 /* Pods */ = {
@@ -460,8 +505,15 @@
 			files = (
 				4984BFB1262095C70055948C /* NetworkServices.swift in Sources */,
 				4984BFB9262096600055948C /* DataFetcher.swift in Sources */,
+				4984BFE62622CFEE0055948C /* CDFormattedMessage+CoreDataClass.swift in Sources */,
 				4984BF64262074B80055948C /* ViewController.swift in Sources */,
 				4984BF9F2620938F0055948C /* DataModel.swift in Sources */,
+				4984BFF02622DD4E0055948C /* MessageRepository.swift in Sources */,
+				4984BFD02621BC2A0055948C /* MessageData.xcdatamodeld in Sources */,
+				4984BFD52621E3CD0055948C /* PersistanceStorage.swift in Sources */,
+				4984BFE72622CFEE0055948C /* CDFormattedMessage+CoreDataProperties.swift in Sources */,
+				4984BFF8262302FF0055948C /* NetworkReachability.swift in Sources */,
+				4984BFC72621BBB10055948C /* CoreData.swift in Sources */,
 				4984BF60262074B80055948C /* AppDelegate.swift in Sources */,
 				4984BFA8262094660055948C /* ChatViewModel.swift in Sources */,
 				4984BF62262074B80055948C /* SceneDelegate.swift in Sources */,
@@ -805,6 +857,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4984BFCE2621BC2A0055948C /* MessageData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4984BFCF2621BC2A0055948C /* MessageData.xcdatamodel */,
+			);
+			currentVersion = 4984BFCF2621BC2A0055948C /* MessageData.xcdatamodel */;
+			path = MessageData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4984BF54262074B80055948C /* Project object */;
 }

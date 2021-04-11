@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Messagekit
+import MessageKit
 
 class ChatMessageFetcher {
     
@@ -22,7 +22,7 @@ class ChatMessageFetcher {
 
         components.queryItems = [
             URLQueryItem(name: "apiKey", value: _apikey),
-            URLQueryItem(name: "chatBotID", value: chatBotId),
+            URLQueryItem(name: "chatBotID", value: "\(chatBotId)"),
             URLQueryItem(name: "externalID", value: userId),
             URLQueryItem(name: "message", value: message)
         ]

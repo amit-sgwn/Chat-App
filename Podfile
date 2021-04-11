@@ -8,7 +8,7 @@ target 'Chat' do
   # Pods for Chat
 
 pod 'MessageKit'
-#pod 'RealmSwift'
+pod 'JGProgressHUD'
 
 
   target 'ChatTests' do
